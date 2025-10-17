@@ -2,6 +2,9 @@ package calculator;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Input input = new Input();
+
+        String userInput = input.requestInput();
+        System.out.println("사용자가 입력한 문자열: " + userInput);
     }
 }
