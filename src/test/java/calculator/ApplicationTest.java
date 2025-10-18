@@ -2,13 +2,32 @@ package calculator;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void 빈_문자열_입력_시_0_반환() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "";
+
+        int result = stringCalculator.calculate(input);
+
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    void null_입력_시_0_반환() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = null;
+
+        int result = stringCalculator.calculate(input);
+
+        assertThat(result).isEqualTo(0);
+    }
 
     @Test
     void 커스텀_구분자_사용() {
