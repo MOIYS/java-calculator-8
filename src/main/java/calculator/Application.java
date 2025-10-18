@@ -5,12 +5,13 @@ public class Application {
 
         Input input = new Input();
         StringCalculator stringCalculator = new StringCalculator();
+        Output output = new Output();
 
         String userInput = input.requestInput();
-        System.out.println("사용자가 입력한 문자열: " + userInput);
+        output.printInputConfirmation(userInput);
 
         int result = stringCalculator.calculate(userInput);
 
-        System.out.println("결과: " + result);
+        output.printResult(result);
     }
 }
