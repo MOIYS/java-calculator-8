@@ -30,6 +30,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 단일_숫자_입력_시_해당_숫자_반환() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "3";
+
+        int result = stringCalculator.calculate(input);
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
             run("//;\\n1");
