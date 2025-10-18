@@ -9,6 +9,10 @@ public class StringCalculator {
 
     public int calculate(String text) {
 
+        if(text == null || text.isEmpty()) {
+            return 0;
+        }
+
         String finalRegex = DEFAULT_DELIMITERS_REGEX;
 
         // 입력이 "//"로 시작하면, 커스텀 구분자 형식으로 간주
