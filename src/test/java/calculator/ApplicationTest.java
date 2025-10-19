@@ -57,6 +57,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 빈_커스텀_구분자를_입력하는_경우() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "//\\n1: 2, 3 ";
+
+        int result = stringCalculator.calculate(input);
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
     void 구분자가_연속으로_입력될_경우() {
         StringCalculator stringCalculator = new StringCalculator();
         String input = "//;\\n1,:;2,3";

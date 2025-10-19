@@ -23,13 +23,15 @@ public class StringCalculator {
 
             text = body;
             String customDelimiter = header.substring(2);
-            finalRegex = Pattern.quote(customDelimiter) + "|" + DEFAULT_DELIMITERS_REGEX;
+
+            if(!customDelimiter.isEmpty()) {
+                finalRegex = Pattern.quote(customDelimiter) + "|" + DEFAULT_DELIMITERS_REGEX;
+            }
         }
 
         String[] numbers = text.split(finalRegex);
 
         int sum = 0;
-
         for(String number : numbers)
         {
             // 숫자로 변환하기 전, 앞뒤 공백 제거
