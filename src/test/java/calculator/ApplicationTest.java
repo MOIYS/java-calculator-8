@@ -66,6 +66,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 문자열_마지막이_구분자로_끝나는_경우() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "1,2,3, ";
+
+        int result = stringCalculator.calculate(input);
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
             run("//;\\n1");
