@@ -92,6 +92,22 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 커스텀_구분자가_두_문자_이상인_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//;-\\n1,2,3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 커스텀_구분자에_숫자가_있는_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//4\\n1,2,3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
             run("//;\\n1");
