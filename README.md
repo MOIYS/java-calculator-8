@@ -23,3 +23,5 @@
 ### 4. 예외 처리
 - [ ] 음수 입력 시 `IllegalArgumentException`을 발생
 - [ ] 숫자 이외의 문자 포함 시 `IllegalArgumentException`을 발생
+- [ ] 커스텀 구분자가 단일 문자가 아닌 경우 `IllegalArgumentException`을 발생
+- [ ] 커스텀 구분자에 숫자가 포함된 경우 `IllegalArgumentException`을 발생
