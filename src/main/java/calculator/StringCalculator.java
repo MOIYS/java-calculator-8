@@ -32,14 +32,25 @@ public class StringCalculator {
         String[] numbers = text.split(finalRegex);
 
         int sum = 0;
-        for(String number : numbers)
+        for(String numberStr : numbers)
         {
             // 숫자로 변환하기 전, 앞뒤 공백 제거
-            String trimmedNumber = number.trim();
+            String trimmedNumberStr = numberStr.trim();
 
             // 공백 제거 후, 빈 문자열이 아닌지 확인
-            if(!trimmedNumber.isEmpty()) {
-                sum += Integer.parseInt(trimmedNumber);
+            if(!trimmedNumberStr.isEmpty()) {
+                try {
+                    int number = Integer.parseInt(trimmedNumberStr);
+
+                    // 음수면, 예외 발생
+                    if(number < 0) {
+                        throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+                    }
+
+                    sum += number;
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("숫자가 아닌 문자는 입력할 수 없습니다.");
+                }
             }
         }
 

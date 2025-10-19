@@ -84,6 +84,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 숫자가_아닌_문자를_입력한_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,2,3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
             run("//;\\n1");
