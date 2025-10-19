@@ -32,7 +32,13 @@ public class StringCalculator {
 
         for(String number : numbers)
         {
-            sum += Integer.parseInt(number);
+            // 숫자로 변환하기 전, 앞뒤 공백 제거
+            String trimmedNumber = number.trim();
+
+            // 공백 제거 후, 빈 문자열이 아닌지 확인
+            if(!trimmedNumber.isEmpty()) {
+                sum += Integer.parseInt(trimmedNumber);
+            }
         }
 
         return sum;

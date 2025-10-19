@@ -39,6 +39,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 커스텀_구분자_없이_공백이_포함된_경우() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "1, 2: 3 ";
+
+        int result = stringCalculator.calculate(input);
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void 커스텀_구분자가_공백일_경우() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "// \\n1 2, 3 ";
+
+        int result = stringCalculator.calculate(input);
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void 구분자가_연속으로_입력될_경우() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "//;\\n1,:;2,3";
+
+        int result = stringCalculator.calculate(input);
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
             run("//;\\n1");
