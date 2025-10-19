@@ -24,17 +24,17 @@ public class StringCalculator {
             text = body;
             String customDelimiter = header.substring(2);
 
-            if(customDelimiter.length() != 1) {
-                throw new IllegalArgumentException("커스텀 구분자는 단일 문자여야 합니다.");
-            }
-
-            if(customDelimiter.matches("\\d")) {
-                throw new IllegalArgumentException("커스텀 구분자는 숫자를 포함할 수 없습니다.");
-            }
-
             if(!customDelimiter.isEmpty()) {
+                if(customDelimiter.length() != 1) {
+                    throw new IllegalArgumentException("커스텀 구분자는 단일 문자여야 합니다.");
+                }
+                if(customDelimiter.matches("\\d")) {
+                    throw new IllegalArgumentException("커스텀 구분자는 숫자를 포함할 수 없습니다.");
+                }
+
                 finalRegex = Pattern.quote(customDelimiter) + "|" + DEFAULT_DELIMITERS_REGEX;
             }
+
         }
 
         String[] numbers = text.split(finalRegex);
