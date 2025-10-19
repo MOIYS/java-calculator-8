@@ -1,6 +1,6 @@
 package calculator;
 
-import java.util.regex.Pattern;  // Pattern.quote
+import java.util.regex.Pattern;
 
 public class StringCalculator {
 
@@ -9,26 +9,26 @@ public class StringCalculator {
 
     public int calculate(String text) {
 
-        if(text == null || text.isEmpty()) {
+        if (text == null || text.isEmpty()) {
             return 0;
         }
 
         String finalRegex = DEFAULT_DELIMITERS_REGEX;
 
         // 입력이 "//"로 시작하면, 커스텀 구분자 형식으로 간주
-        if(text.startsWith("//")) {
+        if (text.startsWith("//")) {
             String[] parts = text.split(Pattern.quote("\\n"), 2);
             String header = parts[0];
             String body = parts[1];
 
             text = body;
-            String customDelimiter = header.substring(2);
+            String customDelimiter = header.substring(2);  // "//" 다음에 있는 커스텀 구분자
 
-            if(!customDelimiter.isEmpty()) {
-                if(customDelimiter.length() != 1) {
+            if (!customDelimiter.isEmpty()) {
+                if (customDelimiter.length() != 1) {
                     throw new IllegalArgumentException("커스텀 구분자는 단일 문자여야 합니다.");
                 }
-                if(customDelimiter.matches("\\d")) {
+                if (customDelimiter.matches("\\d")) {
                     throw new IllegalArgumentException("커스텀 구분자는 숫자를 포함할 수 없습니다.");
                 }
 
@@ -42,20 +42,19 @@ public class StringCalculator {
         return sumNumbers(numbers);
     }
 
-    private static int sumNumbers(String[] numbers) {
+    private int sumNumbers(String[] numbers) {
         int sum = 0;
-        for(String numberStr : numbers)
-        {
+        for (String numberStr : numbers) {
             // 숫자로 변환하기 전, 앞뒤 공백 제거
             String trimmedNumberStr = numberStr.trim();
 
             // 공백 제거 후, 빈 문자열이 아닌지 확인
-            if(!trimmedNumberStr.isEmpty()) {
+            if (!trimmedNumberStr.isEmpty()) {
                 try {
                     int number = Integer.parseInt(trimmedNumberStr);
 
                     // 음수면, 예외 발생
-                    if(number < 0) {
+                    if (number < 0) {
                         throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
                     }
 
